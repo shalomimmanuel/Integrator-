@@ -1,66 +1,79 @@
-## Experiment No: 3
-DIFFERENTIATOR USING OP-AMP (μA741)
+## Experiment No: 4
+INTEGRATOR USING OP-AMP (μA741)
 ## Aim
-To design and simulate a Differentiator circuit using μA741 in Proteus Design Suite and verify that the output is proportional to the rate of change of input voltage.
+To design and simulate an Integrator circuit using μA741 in Proteus Design Suite and verify that the output is proportional to the integral of the input voltage.
 ## Apparatus Required
 •	μA741 Op-Amp
-•	Capacitor C = 0.01 µF
-•	Resistor Rf = 10 kΩ
+•	Resistor R = 10 kΩ
+•	Capacitor Cf = 0.01 µF
 •	Signal Generator
 •	Dual Power Supply (±15V)
 •	CRO / Oscilloscope
 •	Connecting wires
 ## Circuit Diagram
-<img width="918" height="516" alt="Screenshot 2026-01-27 135514" src="https://github.com/user-attachments/assets/dc3e936f-ab9a-4689-8cdc-cad3c1db56b0" />
+<img width="603" height="376" alt="Screenshot 2026-02-25 135456" src="https://github.com/user-attachments/assets/8e982210-31c8-4910-b50b-213e06d98c32" />
 
 ## Connection Details:
-•	Input signal → Capacitor (C) → Inverting terminal (Pin 2)
-•	Feedback resistor (Rf) → Between Output (Pin 6) and Pin 2
+•	Input signal → Resistor (R) → Inverting terminal (Pin 2)
+•	Feedback capacitor (Cf) → Between Output (Pin 6) and Pin 2
 •	Non-inverting terminal (Pin 3) → Ground
 •	Pin 7 → +15V
 •	Pin 4 → −15V
 ## Theory
-A Differentiator circuit produces an output voltage proportional to the rate of change of input voltage.
+An Integrator circuit produces an output voltage proportional to the integral of the input voltage.
 ## Working Principle:
-•	When input changes rapidly → output amplitude increases
-•	When input is constant → output is zero
+•	When input is constant → output is ramp signal
 •	Output is inverted
+•	Output depends on time
+For Sine Wave Input:
+•	Output lags input by 90°
+•	Output amplitude decreases with frequency
 ## Procedure
 1.	Open Proteus software.
-2.	Select μA741, capacitor, resistor, signal generator, and CRO.
-3.	Connect circuit in differentiator configuration.
+2.	Select μA741, resistor, capacitor, signal generator, and CRO.
+3.	Connect circuit in integrator configuration.
 4.	Apply ±15V power supply.
-5.	Set input sine wave (1V, 1kHz).
+5.	Set input waveform (1V, 1kHz).
 6.	Run simulation.
 7.	Observe input and output waveforms on CRO.
 ## Tabulation
-| S.No | Input Signal    | Frequency        | Expected Output                                        | Practical Observation (Proteus)                         |
-| ---- | --------------- | ---------------- | ------------------------------------------------------ | ------------------------------------------------------- |
-| 1    | Sine wave       | Low (≈100 Hz)    | Small amplitude cosine wave, output leads input by 90° | Output is small, phase lead clearly observed            |
-| 2    | Sine wave       | Medium (≈500 Hz) | Increased output amplitude, still leading by 90°       | Output amplitude increases, clean waveform              |
-| 3    | Sine wave       | High (≈1 kHz)    | Large output amplitude (∝ frequency)                   | Output amplitude much higher, slight distortion visible |
-| 4    | Square wave     | Medium           | Sharp spikes at rising and falling edges               | Spikes observed at transitions                          |
-| 5    | Triangular wave | Medium           | Square wave output                                     | Nearly square waveform obtained                         |
+| **S.No** | **Input Signal** | **Frequency** | **Expected Output**          | **Practical Observation**                |
+| -------- | ---------------- | ------------- | ---------------------------- | ---------------------------------------- |
+| 1        | Square wave      | 100 Hz        | Positive and negative spikes | Sharp spikes at rising and falling edges |
+| 2        | Triangular wave  | 100 Hz        | Square wave                  | Square wave obtained                     |
+| 3        | Sine wave        | 100 Hz        | Cosine wave                  | Phase-shifted sine wave observed         |
+| 4        | Square wave      | 1 kHz         | Higher amplitude spikes      | Narrow and sharper spikes observed       |
+| 5        | Sine wave        | 1 kHz         | Higher amplitude cosine wave | Output amplitude increased               |
 
 ## Waveforms
-<img width="1920" height="1080" alt="Screenshot 2026-01-27 135455" src="https://github.com/user-attachments/assets/1c3ff548-6cc3-43ae-8e35-66340b14cc6c" />
+<img width="756" height="472" alt="Screenshot 2026-02-25 135522" src="https://github.com/user-attachments/assets/92dda498-a4a7-4226-b893-8d5366c56cc5" />
+<img width="756" height="472" alt="Screenshot 2026-02-25 135510" src="https://github.com/user-attachments/assets/2845be46-cbe2-4246-b6ed-29eb337edc0b" />
+<img width="756" height="462" alt="Screenshot 2026-02-25 135533" src="https://github.com/user-attachments/assets/37f96248-3a75-4947-bb68-0d3b3e5295c0" />
 
 ## Result
-The Differentiator circuit using μA741 Op-Amp was successfully designed and simulated in Proteus.
-The output waveform is proportional to the rate of change of input voltage.
-The circuit behaves as a differentiator.
+The Integrator circuit using μA741 Op-Amp was successfully designed and simulated in Proteus.
+The output waveform is proportional to the integral of the input signal.
+The circuit behaves as an integrator.
 ## Conclusion
-•	Output depends on frequency.
-•	Output leads input by 90° (for sine input).
-•	Higher frequency → Higher output amplitude.
-•	Used in wave shaping and signal processing applications.
+•	Output lags input by 90° (for sine input).
+•	Output amplitude decreases with increase in frequency.
+•	Used in waveform generation and analog computation.
 ## Viva Questions
-1. What is a differentiator? 
-ANS: A differentiator is an op-amp circuit in which the output voltage is proportional to the rate of change of the input voltage.
-2. Write the output equation of differentiator. 
-ANS: Vout​=−RCdVin/dt​​
-3. Why is output leading input? 
-ANS: Because the output depends on the rate of change of the input, the output responds faster than the input signal, causing it to lead in phase.
+1. What is an integrator circuit?
+An integrator circuit is an op-amp based circuit in which the output voltage is proportional to the time integral of the input voltage. It is commonly implemented using an operational amplifier with a resistor at the input and a capacitor in the feedback path.
+
+2. Write the output equation of integrator.
+   The output voltage of an ideal integrator is given by
+             Vo​=−RC1​∫Vi​dt
+   
+3. Why does output lag input?
+The output of an integrator lags the input because integration introduces a phase shift of −90°, which is due to the charging and discharging behavior of the capacitor in the feedback path.
+
+4. What happens at very low frequency?
+At very low frequencies or DC input, the capacitor behaves like an open circuit, causing the output voltage to increase continuously and drive the op-amp into saturation.
+
+5. What is practical integrator?
+A practical integrator is an improved integrator circuit in which a resistor is connected in parallel with the feedback capacitor to limit the gain at low frequencies and prevent saturation.
 4. What happens at very high frequency?
 ANS: The gain becomes very high, which may cause noise amplification and instability.
 5. What is practical differentiator?
